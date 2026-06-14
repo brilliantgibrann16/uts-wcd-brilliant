@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore Brilliant's personal playlists, from Late Night Coding to Rainy Jakarta.">
+  <title>Brilliant's Music Universe | Playlists</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2322e87a'/%3E%3Cpath d='M25 43V20l22-4v21' fill='none' stroke='%23040a06' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='22' cy='44' r='7' fill='%23040a06'/%3E%3Ccircle cx='44' cy='38' r='7' fill='%23040a06'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+  <script src="script.js" defer></script>
+</head>
+<body data-page="playlists">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Brilliant's Music Universe home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40" role="img">
+          <path d="M20 4 35 12.6v14.8L20 36 5 27.4V12.6L20 4Z"></path>
+          <path d="M15.5 26.5V14.2l12-2.4v11.7"></path>
+          <circle cx="13.1" cy="27.4" r="3.4"></circle>
+          <circle cx="25.1" cy="24.2" r="3.4"></circle>
+        </svg>
+      </span>
+      <span class="brand-text">Brilliant's Music Universe</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="site-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+      <a href="index.html" data-nav="home">Home</a>
+      <a href="playlists.html" data-nav="playlists">Playlists</a>
+      <a href="library.html" data-nav="library">Music Library</a>
+      <a href="about.html" data-nav="about">About</a>
+    </nav>
+
+    <a class="header-action" href="library.html">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h10"></path>
+      </svg>
+      Library
+    </a>
+  </header>
+
+  <main id="main-content">
+    <section class="page-hero section-shell">
+      <div class="page-hero-copy reveal">
+        <h1>Playlists built for real moments.</h1>
+        <p>Each mix has its own atmosphere: coding focus, indie romance, Conan Gray nostalgia, sunset movement, and rainy Jakarta reflection.</p>
+      </div>
+      <div class="page-hero-visual playlist-stack reveal" aria-hidden="true">
+        <div class="mini-cover cover-code"></div>
+        <div class="mini-cover cover-reality"></div>
+        <div class="mini-cover cover-conan"></div>
+      </div>
+    </section>
+
+    <section class="playlist-section section-shell" aria-label="Playlist cards">
+      <article class="playlist-card reveal" data-playlist-card="late-night-coding">
+        <div class="cover-art cover-code">
+          <div class="cover-grid" aria-hidden="true"></div>
+          <span>Late Night Coding</span>
+        </div>
+        <div class="playlist-card-body">
+          <div>
+            <h2>Late Night Coding</h2>
+            <p>Lo-fi focus, indie-pop warmth, and clean electronic pulses for study nights and project deadlines.</p>
+          </div>
+          <div class="playlist-meta">
+            <span>34 songs</span>
+            <span class="mood-tag">Focus</span>
+          </div>
+          <button class="button button-small detail-button" type="button" data-playlist="late-night-coding">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6"></path>
+            </svg>
+            Open details
+          </button>
+          <a class="spotify-link" href="https://open.spotify.com/search/Late%20Night%20Coding%20playlist" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.4a.6.6 0 0 1-.8.2c-2.3-1.4-5.2-1.7-8.6-.9a.6.6 0 1 1-.3-1.2c3.7-.8 6.9-.5 9.5 1.1a.6.6 0 0 1 .2.8Zm1.2-2.7a.8.8 0 0 1-1 .3c-2.7-1.6-6.7-2.1-9.8-1.1a.8.8 0 1 1-.4-1.5c3.6-1.1 8-.6 11 1.3a.8.8 0 0 1 .2 1Zm.1-2.8c-3.1-1.9-8.3-2-11.3-1.1a.9.9 0 1 1-.5-1.8c3.4-1 9.1-.8 12.7 1.3a.9.9 0 0 1-.9 1.6Z" fill="currentColor" stroke="none"></path></svg>
+            Find on Spotify
+          </a>
+        </div>
+      </article>
+
+      <article class="playlist-card reveal" data-playlist-card="reality-club-vibes">
+        <div class="cover-art cover-reality">
+          <div class="cover-grid" aria-hidden="true"></div>
+          <span>Reality Club Vibes</span>
+        </div>
+        <div class="playlist-card-body">
+          <div>
+            <h2>Reality Club Vibes</h2>
+            <p>Indonesian indie charm, sweet hooks, and guitar-led songs that feel cinematic but still personal.</p>
+          </div>
+          <div class="playlist-meta">
+            <span>22 songs</span>
+            <span class="mood-tag">Indie</span>
+          </div>
+          <button class="button button-small detail-button" type="button" data-playlist="reality-club-vibes">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6"></path>
+            </svg>
+            Open details
+          </button>
+          <a class="spotify-link" href="https://open.spotify.com/search/Reality%20Club%20playlist" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.4a.6.6 0 0 1-.8.2c-2.3-1.4-5.2-1.7-8.6-.9a.6.6 0 1 1-.3-1.2c3.7-.8 6.9-.5 9.5 1.1a.6.6 0 0 1 .2.8Zm1.2-2.7a.8.8 0 0 1-1 .3c-2.7-1.6-6.7-2.1-9.8-1.1a.8.8 0 1 1-.4-1.5c3.6-1.1 8-.6 11 1.3a.8.8 0 0 1 .2 1Zm.1-2.8c-3.1-1.9-8.3-2-11.3-1.1a.9.9 0 1 1-.5-1.8c3.4-1 9.1-.8 12.7 1.3a.9.9 0 0 1-.9 1.6Z" fill="currentColor" stroke="none"></path></svg>
+            Find on Spotify
+          </a>
+        </div>
+      </article>
+
+      <article class="playlist-card reveal" data-playlist-card="conan-gray-era">
+        <div class="cover-art cover-conan">
+          <div class="cover-grid" aria-hidden="true"></div>
+          <span>Conan Gray Era</span>
+        </div>
+        <div class="playlist-card-body">
+          <div>
+            <h2>Conan Gray Era</h2>
+            <p>Bedroom-pop drama, heartbreak storytelling, and bright choruses for reflective main-character moments.</p>
+          </div>
+          <div class="playlist-meta">
+            <span>28 songs</span>
+            <span class="mood-tag">Nostalgic</span>
+          </div>
+          <button class="button button-small detail-button" type="button" data-playlist="conan-gray-era">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6"></path>
+            </svg>
+            Open details
+          </button>
+          <a class="spotify-link" href="https://open.spotify.com/search/Conan%20Gray%20playlist" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.4a.6.6 0 0 1-.8.2c-2.3-1.4-5.2-1.7-8.6-.9a.6.6 0 1 1-.3-1.2c3.7-.8 6.9-.5 9.5 1.1a.6.6 0 0 1 .2.8Zm1.2-2.7a.8.8 0 0 1-1 .3c-2.7-1.6-6.7-2.1-9.8-1.1a.8.8 0 1 1-.4-1.5c3.6-1.1 8-.6 11 1.3a.8.8 0 0 1 .2 1Zm.1-2.8c-3.1-1.9-8.3-2-11.3-1.1a.9.9 0 1 1-.5-1.8c3.4-1 9.1-.8 12.7 1.3a.9.9 0 0 1-.9 1.6Z" fill="currentColor" stroke="none"></path></svg>
+            Find on Spotify
+          </a>
+        </div>
+      </article>
+
+      <article class="playlist-card reveal" data-playlist-card="sunset-drive">
+        <div class="cover-art cover-sunset">
+          <div class="cover-grid" aria-hidden="true"></div>
+          <span>Sunset Drive</span>
+        </div>
+        <div class="playlist-card-body">
+          <div>
+            <h2>Sunset Drive</h2>
+            <p>Golden-hour pop, road-trip guitars, and songs that make traffic feel like a slow movie scene.</p>
+          </div>
+          <div class="playlist-meta">
+            <span>31 songs</span>
+            <span class="mood-tag">Warm</span>
+          </div>
+          <button class="button button-small detail-button" type="button" data-playlist="sunset-drive">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6"></path>
+            </svg>
+            Open details
+          </button>
+          <a class="spotify-link" href="https://open.spotify.com/search/Sunset%20Drive%20playlist" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.4a.6.6 0 0 1-.8.2c-2.3-1.4-5.2-1.7-8.6-.9a.6.6 0 1 1-.3-1.2c3.7-.8 6.9-.5 9.5 1.1a.6.6 0 0 1 .2.8Zm1.2-2.7a.8.8 0 0 1-1 .3c-2.7-1.6-6.7-2.1-9.8-1.1a.8.8 0 1 1-.4-1.5c3.6-1.1 8-.6 11 1.3a.8.8 0 0 1 .2 1Zm.1-2.8c-3.1-1.9-8.3-2-11.3-1.1a.9.9 0 1 1-.5-1.8c3.4-1 9.1-.8 12.7 1.3a.9.9 0 0 1-.9 1.6Z" fill="currentColor" stroke="none"></path></svg>
+            Find on Spotify
+          </a>
+        </div>
+      </article>
+
+      <article class="playlist-card reveal" data-playlist-card="rainy-jakarta">
+        <div class="cover-art cover-rain">
+          <div class="cover-grid" aria-hidden="true"></div>
+          <span>Rainy Jakarta</span>
+        </div>
+        <div class="playlist-card-body">
+          <div>
+            <h2>Rainy Jakarta</h2>
+            <p>Soft vocals, glass-window ambience, and quiet songs for rainy roads, coffee, and thinking clearly.</p>
+          </div>
+          <div class="playlist-meta">
+            <span>26 songs</span>
+            <span class="mood-tag">Rainy</span>
+          </div>
+          <button class="button button-small detail-button" type="button" data-playlist="rainy-jakarta">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6"></path>
+            </svg>
+            Open details
+          </button>
+          <a class="spotify-link" href="https://open.spotify.com/search/Rainy%20Jakarta%20playlist" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.4a.6.6 0 0 1-.8.2c-2.3-1.4-5.2-1.7-8.6-.9a.6.6 0 1 1-.3-1.2c3.7-.8 6.9-.5 9.5 1.1a.6.6 0 0 1 .2.8Zm1.2-2.7a.8.8 0 0 1-1 .3c-2.7-1.6-6.7-2.1-9.8-1.1a.8.8 0 1 1-.4-1.5c3.6-1.1 8-.6 11 1.3a.8.8 0 0 1 .2 1Zm.1-2.8c-3.1-1.9-8.3-2-11.3-1.1a.9.9 0 1 1-.5-1.8c3.4-1 9.1-.8 12.7 1.3a.9.9 0 0 1-.9 1.6Z" fill="currentColor" stroke="none"></path></svg>
+            Find on Spotify
+          </a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <div class="modal-backdrop" id="playlist-modal" hidden>
+    <section class="playlist-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" type="button" data-close-modal aria-label="Close playlist details">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 6l12 12M18 6 6 18"></path>
+        </svg>
+      </button>
+      <div class="modal-cover cover-art cover-code" id="modal-cover">
+        <div class="cover-grid" aria-hidden="true"></div>
+        <span id="modal-cover-title">Playlist</span>
+      </div>
+      <div class="modal-content">
+        <p class="section-kicker" id="modal-mood">Mood</p>
+        <h2 id="modal-title">Playlist details</h2>
+        <a class="spotify-link" id="modal-spotify" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.6 14.4a.6.6 0 0 1-.8.2c-2.3-1.4-5.2-1.7-8.6-.9a.6.6 0 1 1-.3-1.2c3.7-.8 6.9-.5 9.5 1.1a.6.6 0 0 1 .2.8Zm1.2-2.7a.8.8 0 0 1-1 .3c-2.7-1.6-6.7-2.1-9.8-1.1a.8.8 0 1 1-.4-1.5c3.6-1.1 8-.6 11 1.3a.8.8 0 0 1 .2 1Zm.1-2.8c-3.1-1.9-8.3-2-11.3-1.1a.9.9 0 1 1-.5-1.8c3.4-1 9.1-.8 12.7 1.3a.9.9 0 0 1-.9 1.6Z" fill="currentColor" stroke="none"></path></svg>
+          Listen on Spotify
+        </a>
+        <ul class="modal-list" id="modal-songs"></ul>
+        <div class="modal-nav">
+          <button type="button" id="modal-prev" aria-label="Previous playlist">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            Previous
+          </button>
+          <button type="button" id="modal-next" aria-label="Next playlist">
+            Next
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="site-footer">
+    <div>
+      <a class="footer-brand" href="index.html">Brilliant's Music Universe</a>
+      <p>Personal playlists, favorite songs, and listening experiences built with HTML, CSS, and vanilla JavaScript.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="index.html">Home</a>
+      <a href="playlists.html">Playlists</a>
+      <a href="library.html">Music Library</a>
+      <a href="about.html">About</a>
+    </nav>
+  </footer>
+</body>
+</html>

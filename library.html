@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse Brilliant's music library table with song title, artist, genre, mood, and duration.">
+  <title>Brilliant's Music Universe | Music Library</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2322e87a'/%3E%3Cpath d='M25 43V20l22-4v21' fill='none' stroke='%23040a06' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='22' cy='44' r='7' fill='%23040a06'/%3E%3Ccircle cx='44' cy='38' r='7' fill='%23040a06'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+  <script src="script.js" defer></script>
+</head>
+<body data-page="library">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Brilliant's Music Universe home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40" role="img">
+          <path d="M20 4 35 12.6v14.8L20 36 5 27.4V12.6L20 4Z"></path>
+          <path d="M15.5 26.5V14.2l12-2.4v11.7"></path>
+          <circle cx="13.1" cy="27.4" r="3.4"></circle>
+          <circle cx="25.1" cy="24.2" r="3.4"></circle>
+        </svg>
+      </span>
+      <span class="brand-text">Brilliant's Music Universe</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="site-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+      <a href="index.html" data-nav="home">Home</a>
+      <a href="playlists.html" data-nav="playlists">Playlists</a>
+      <a href="library.html" data-nav="library">Music Library</a>
+      <a href="about.html" data-nav="about">About</a>
+    </nav>
+
+    <a class="header-action" href="about.html">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 21s7-4.4 7-11a7 7 0 0 0-14 0c0 6.6 7 11 7 11Z"></path>
+        <path d="M12 10h.01"></path>
+      </svg>
+      Story
+    </a>
+  </header>
+
+  <main id="main-content">
+    <section class="page-hero section-shell">
+      <div class="page-hero-copy reveal">
+        <h1>Music Library</h1>
+        <p>A polished table of favorite songs across indie pop, bedroom pop, R&amp;B, alternative rock, and rainy-day moods.</p>
+      </div>
+      <div class="library-summary reveal">
+        <span id="visible-song-count">15</span>
+        <p>tracks visible</p>
+      </div>
+    </section>
+
+    <section class="library-section section-shell">
+      <div class="library-toolbar reveal" aria-label="Music library controls">
+        <label class="search-field">
+          <span>Search</span>
+          <input type="search" id="library-search" placeholder="Search song or artist">
+        </label>
+        <label class="select-field">
+          <span>Genre</span>
+          <select id="genre-filter">
+            <option value="all">All genres</option>
+            <option value="Alternative">Alternative</option>
+            <option value="Bedroom Pop">Bedroom Pop</option>
+            <option value="Dream Pop">Dream Pop</option>
+            <option value="Indie Pop">Indie Pop</option>
+            <option value="Indie Rock">Indie Rock</option>
+            <option value="Pop">Pop</option>
+            <option value="Pop Rock">Pop Rock</option>
+            <option value="R&B">R&amp;B</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="table-frame reveal">
+        <table class="music-table">
+          <caption>Favorite songs selected for Brilliant's Music Universe</caption>
+          <thead>
+            <tr>
+              <th scope="col"><button type="button" class="sort-button" data-sort="title">Song Title</button></th>
+              <th scope="col"><button type="button" class="sort-button" data-sort="artist">Artist</button></th>
+              <th scope="col"><button type="button" class="sort-button" data-sort="genre">Genre</button></th>
+              <th scope="col">Mood</th>
+              <th scope="col"><button type="button" class="sort-button" data-sort="duration">Duration</button></th>
+              <th scope="col">Spotify</th>
+            </tr>
+          </thead>
+          <tbody id="library-body">
+            <tr data-library-row data-title="Anything You Want" data-artist="Reality Club" data-genre="Indie Pop" data-duration="243">
+              <td>Anything You Want</td>
+              <td>Reality Club</td>
+              <td>Indie Pop</td>
+              <td>Feel Good</td>
+              <td>4:03</td>
+              <td><a href="https://open.spotify.com/search/Anything%20You%20Want%20Reality%20Club" target="_blank" rel="noopener">Open</a></td>
+            </tr>
+            <tr data-library-row data-title="Alexandra" data-artist="Reality Club" data-genre="Indie Rock" data-duration="229">
+              <td>Alexandra</td>
+              <td>Reality Club</td>
+              <td>Indie Rock</td>
+              <td>Bittersweet</td>
+              <td>3:49</td>
+              <td><a href="https://open.spotify.com/search/Alexandra%20Reality%20Club" target="_blank" rel="noopener">Open</a></td>
+            </tr>
+            <tr data-library-row data-title="Heather" data-artist="Conan Gray" data-genre="Pop" data-duration="198">
+              <td>Heather</td>
+              <td>Conan Gray</td>
+              <td>Pop</td>
+              <td>Nostalgic</td>
+              <td>3:18</td>
+              <td><a href="https://open.spotify.com/search/Heather%20Conan%20Gray" target="_blank" rel="noopener">Open</a></td>
+            </tr>
+            <tr data-library-row data-title="Maniac" data-artist="Conan Gray" data-genre="Pop Rock" data-duration="185">
+              <td>Maniac</td>
+              <td>Conan Gray</td>
+              <td>Pop Rock</td>
+              <td>Electric</td>
+              <td>3:05</td>
+              <td><a href="https://open.spotify.com/search/Maniac%20Conan%20Gray" target="_blank" rel="noopener">Open</a></td>
+            </tr>
+            <tr data-library-row data-title="Astronomy" data-artist="Conan Gray" data-genre="Bedroom Pop" data-duration="243">
+              <td>Astronomy</td>
+              <td>Conan Gray</td>
+              <td>Bedroom Pop</td>
+              <td>Melancholic</td>
+              <td>4:03</td>
+              <td><a href="https://open.spotify.com/search/Astronomy%20Conan%20Gray" target="_blank" rel="noopener">Open</a></td>
+            </tr>
+            <tr data-library-row data-title="Every Summertime" data-artist="NIKI" data-genre="R&B" data-duration="215">
+              <td>Every Summertime</td>
+              <td>NIKI</td>
+              <td>R&amp;B</td>
+              <td>Sunny</td>
+              <td>3:35</td>
+              <td><a href="https://open.spotify.com/search/Every%20Summertime%20NIKI" target="_blank" rel="noopener">Open</a></td>
+            </tr>
+            <tr data-library-row data-title="La La Lost You" data-artist="NIKI" data-genre="R&B" data-duration="200">
+              <td>La La Lost You</td>
+              <td>NIKI</td>
+              <td>R&amp;B</td>
+              <td>Reflective</td>
+              <td>3:20</td>
+              <td><a href="https://open.spotify.com/search/La%20La%20Lost%20You%20NIKI" target="_blank" rel="noopener">Open</a></td>
+            </tr>
+            <tr data-library-row data-title="The Adults Are Talking" data-artist="The Strokes" data-genre="Indie Rock" data-duration="309">
+              <td>The Adults Are Talking</td>
+              <td>The Strokes</td>
+              <td>Indie Rock</td>
+              <td>Focused</td>
+              <td>5:09</td>
+              <td><a href="https://open.spotify.com/search/The%20Adults%20Are%20Talking%20The%20Strokes" target="_blank" rel="noopener">Open</a></td>
+            </tr>
+            <tr data-library-row data-title="No Surprises" data-artist="Radiohead" data-genre="Alternative" data-duration="229">
+              <td>No Surprises</td>
+              <td>Radiohead</td>
+              <td>Alternative</td>
+              <td>Calm</td>
+              <td>3:49</td>
+              <td><a href="https://open.spotify.com/search/No%20Surprises%20Radiohead" target="_blank" rel="noopener">Open</a></td>
+            </tr>
+            <tr data-library-row data-title="Apocalypse" data-artist="Cigarettes After Sex" data-genre="Dream Pop" data-duration="290">
+              <td>Apocalypse</td>
+              <td>Cigarettes After Sex</td>
+              <td>Dream Pop</td>
+              <td>Rainy</td>
+              <td>4:50</td>
+              <td><a href="https://open.spotify.com/search/Apocalypse%20Cigarettes%20After%20Sex" target="_blank" rel="noopener">Open</a></td>
+            </tr>
+            <tr data-library-row data-title="About You" data-artist="The 1975" data-genre="Indie Pop" data-duration="326">
+              <td>About You</td>
+              <td>The 1975</td>
+              <td>Indie Pop</td>
+              <td>Cinematic</td>
+              <td>5:26</td>
+              <td><a href="https://open.spotify.com/search/About%20You%20The%201975" target="_blank" rel="noopener">Open</a></td>
+            </tr>
+            <tr data-library-row data-title="Here With Me" data-artist="d4vd" data-genre="Bedroom Pop" data-duration="242">
+              <td>Here With Me</td>
+              <td>d4vd</td>
+              <td>Bedroom Pop</td>
+              <td>Late Night</td>
+              <td>4:02</td>
+              <td><a href="https://open.spotify.com/search/Here%20With%20Me%20d4vd" target="_blank" rel="noopener">Open</a></td>
+            </tr>
+            <tr data-library-row data-title="Kill Bill" data-artist="SZA" data-genre="R&B" data-duration="154">
+              <td>Kill Bill</td>
+              <td>SZA</td>
+              <td>R&amp;B</td>
+              <td>Moody</td>
+              <td>2:34</td>
+              <td><a href="https://open.spotify.com/search/Kill%20Bill%20SZA" target="_blank" rel="noopener">Open</a></td>
+            </tr>
+            <tr data-library-row data-title="Sweet Disposition" data-artist="The Temper Trap" data-genre="Alternative" data-duration="233">
+              <td>Sweet Disposition</td>
+              <td>The Temper Trap</td>
+              <td>Alternative</td>
+              <td>Sunset</td>
+              <td>3:53</td>
+              <td><a href="https://open.spotify.com/search/Sweet%20Disposition%20The%20Temper%20Trap" target="_blank" rel="noopener">Open</a></td>
+            </tr>
+            <tr data-library-row data-title="I Wanna Be Yours" data-artist="Arctic Monkeys" data-genre="Indie Rock" data-duration="184">
+              <td>I Wanna Be Yours</td>
+              <td>Arctic Monkeys</td>
+              <td>Indie Rock</td>
+              <td>Midnight</td>
+              <td>3:04</td>
+              <td><a href="https://open.spotify.com/search/I%20Wanna%20Be%20Yours%20Arctic%20Monkeys" target="_blank" rel="noopener">Open</a></td>
+            </tr>
+            <tr class="empty-state" id="library-empty" hidden>
+              <td colspan="6">
+                <span class="empty-icon" aria-hidden="true">🔍</span>
+                No songs match your search. Try a different keyword or genre.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <a class="footer-brand" href="index.html">Brilliant's Music Universe</a>
+      <p>Personal playlists, favorite songs, and listening experiences built with HTML, CSS, and vanilla JavaScript.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <a href="index.html">Home</a>
+      <a href="playlists.html">Playlists</a>
+      <a href="library.html">Music Library</a>
+      <a href="about.html">About</a>
+    </nav>
+  </footer>
+</body>
+</html>
