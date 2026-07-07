@@ -50,6 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupCounters();
   setupPlaylistModal();
   setupLibraryTools();
+  setupPlaylistRequestForm();
 });
 
 function setActiveNavigation() {
@@ -68,6 +69,12 @@ function setupMobileNavigation() {
   const nav = document.querySelector("#site-nav");
   if (!toggle || !nav) return;
 
+  const closeNavigation = () => {
+    document.body.classList.remove("nav-open");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "Open navigation menu");
+  };
+
   toggle.addEventListener("click", () => {
     const isOpen = document.body.classList.toggle("nav-open");
     toggle.setAttribute("aria-expanded", String(isOpen));
@@ -76,9 +83,14 @@ function setupMobileNavigation() {
 
   nav.addEventListener("click", (event) => {
     if (event.target instanceof HTMLAnchorElement) {
-      document.body.classList.remove("nav-open");
-      toggle.setAttribute("aria-expanded", "false");
-      toggle.setAttribute("aria-label", "Open navigation menu");
+      closeNavigation();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && document.body.classList.contains("nav-open")) {
+      closeNavigation();
+      toggle.focus();
     }
   });
 }
@@ -158,13 +170,22 @@ function setupPlaylistModal() {
 
   const coverClasses = ["cover-code", "cover-reality", "cover-conan", "cover-sunset", "cover-rain"];
   const keys = Object.keys(playlistDetails);
+  const focusableSelectors = [
+    "a[href]",
+    "button:not([disabled])",
+    "input:not([disabled])",
+    "select:not([disabled])",
+    "textarea:not([disabled])",
+    "[tabindex]:not([tabindex='-1'])"
+  ].join(", ");
   let currentKey = "";
   let lastActiveElement = null;
 
   const updateModalContent = (key) => {
-    currentKey = key;
     const playlist = playlistDetails[key];
     if (!playlist) return;
+
+    currentKey = key;
 
     modalTitle.textContent = playlist.title;
     modalMood.textContent = playlist.mood;
@@ -174,10 +195,35 @@ function setupPlaylistModal() {
     modalCover.classList.remove(...coverClasses);
     modalCover.classList.add(playlist.coverClass);
     
-    modalSongs.innerHTML = playlist.songs.map((song) => `<li>${song}</li>`).join("");
+    modalSongs.replaceChildren(...playlist.songs.map((song) => {
+      const item = document.createElement("li");
+      item.textContent = song;
+      return item;
+    }));
 
     if (modalSpotify && playlist.spotifySearchUrl) {
       modalSpotify.setAttribute("href", playlist.spotifySearchUrl);
+    }
+  };
+
+  const getFocusableElements = () => Array.from(modal.querySelectorAll(focusableSelectors))
+    .filter((element) => element instanceof HTMLElement && element.offsetParent !== null);
+
+  const keepFocusInsideModal = (event) => {
+    if (event.key !== "Tab" || modal.hidden) return;
+
+    const focusableElements = getFocusableElements();
+    if (!focusableElements.length) return;
+
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    if (event.shiftKey && document.activeElement === firstElement) {
+      event.preventDefault();
+      lastElement.focus();
+    } else if (!event.shiftKey && document.activeElement === lastElement) {
+      event.preventDefault();
+      firstElement.focus();
     }
   };
 
@@ -192,7 +238,7 @@ function setupPlaylistModal() {
   const closeModal = () => {
     modal.hidden = true;
     document.body.classList.remove("modal-open");
-    if (lastActiveElement) {
+    if (lastActiveElement instanceof HTMLElement) {
       lastActiveElement.focus();
     }
   };
@@ -221,7 +267,12 @@ function setupPlaylistModal() {
     if (event.target === modal) closeModal();
   });
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && !modal.hidden) closeModal();
+    if (modal.hidden) return;
+    if (event.key === "Escape") {
+      closeModal();
+      return;
+    }
+    keepFocusInsideModal(event);
   });
 }
 
@@ -237,6 +288,21 @@ function setupLibraryTools() {
 
   const rows = Array.from(tableBody.querySelectorAll("[data-library-row]"));
   const state = { sortKey: "", direction: "asc" };
+
+  const updateSortControls = () => {
+    sortButtons.forEach((button) => {
+      const isActive = button.dataset.sort === state.sortKey;
+      const header = button.closest("th");
+
+      button.classList.toggle("is-active", isActive);
+      button.classList.toggle("is-desc", isActive && state.direction === "desc");
+      button.setAttribute("aria-pressed", String(isActive));
+
+      if (header) {
+        header.setAttribute("aria-sort", isActive ? (state.direction === "asc" ? "ascending" : "descending") : "none");
+      }
+    });
+  };
 
   const applyFilters = () => {
     const query = (searchInput?.value || "").trim().toLowerCase();
@@ -269,8 +335,7 @@ function setupLibraryTools() {
       state.direction = state.sortKey === key && state.direction === "asc" ? "desc" : "asc";
       state.sortKey = key;
 
-      sortButtons.forEach((item) => item.classList.remove("is-desc"));
-      if (state.direction === "desc") button.classList.add("is-desc");
+      updateSortControls();
 
       const sortedRows = [...rows].sort((a, b) => {
         const valueA = key === "duration" ? Number(a.dataset.duration) : String(a.dataset[key] || "").toLowerCase();
@@ -285,5 +350,87 @@ function setupLibraryTools() {
     });
   });
 
+  updateSortControls();
   applyFilters();
+}
+
+function setupPlaylistRequestForm() {
+  const form = document.querySelector("#playlist-request-form");
+  if (!form) return;
+
+  const storageKey = "brilliantPlaylistRequest";
+  const clearButton = document.querySelector("#clear-request");
+  const status = document.querySelector("#request-status");
+  const savedTitle = document.querySelector("#saved-request-title");
+  const summaryItems = document.querySelectorAll("[data-summary]");
+  const fields = ["name", "email", "mood", "song", "duration", "notes"];
+
+  const setStatus = (message, type = "") => {
+    if (!status) return;
+    status.textContent = message;
+    status.dataset.type = type;
+  };
+
+  const getSavedRequest = () => {
+    try {
+      return JSON.parse(localStorage.getItem(storageKey) || "null");
+    } catch (error) {
+      return null;
+    }
+  };
+
+  const saveRequest = (request) => {
+    localStorage.setItem(storageKey, JSON.stringify(request));
+  };
+
+  const updateSummary = (request) => {
+    summaryItems.forEach((item) => {
+      const key = item.dataset.summary;
+      const value = request?.[key];
+      item.textContent = value ? (key === "duration" ? `${value} minutes` : value) : "-";
+    });
+
+    if (savedTitle) {
+      savedTitle.textContent = request ? `${request.mood} for ${request.name}` : "No custom request yet.";
+    }
+  };
+
+  const fillForm = (request) => {
+    if (!request) return;
+    fields.forEach((field) => {
+      const input = form.elements[field];
+      if (input) input.value = request[field] || "";
+    });
+  };
+
+  const savedRequest = getSavedRequest();
+  fillForm(savedRequest);
+  updateSummary(savedRequest);
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (!form.checkValidity()) {
+      setStatus("Please complete the required fields with valid data before saving.", "error");
+      form.reportValidity();
+      return;
+    }
+
+    const request = fields.reduce((data, field) => {
+      data[field] = String(form.elements[field]?.value || "").trim();
+      return data;
+    }, {});
+
+    request.savedAt = new Date().toISOString();
+    saveRequest(request);
+    updateSummary(request);
+    setStatus("Playlist request saved. Refresh the page and the data will stay here.", "success");
+  });
+
+  clearButton?.addEventListener("click", () => {
+    localStorage.removeItem(storageKey);
+    form.reset();
+    updateSummary(null);
+    setStatus("Saved playlist request cleared.");
+  });
 }

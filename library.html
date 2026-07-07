@@ -15,7 +15,7 @@
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="Brilliant's Music Universe home">
       <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 40 40" role="img">
+        <svg viewBox="0 0 40 40">
           <path d="M20 4 35 12.6v14.8L20 36 5 27.4V12.6L20 4Z"></path>
           <path d="M15.5 26.5V14.2l12-2.4v11.7"></path>
           <circle cx="13.1" cy="27.4" r="3.4"></circle>
@@ -60,10 +60,10 @@
     </section>
 
     <section class="library-section section-shell">
-      <div class="library-toolbar reveal" aria-label="Music library controls">
+      <div class="library-toolbar reveal" role="search" aria-label="Music library controls">
         <label class="search-field">
           <span>Search</span>
-          <input type="search" id="library-search" placeholder="Search song or artist">
+          <input type="search" id="library-search" placeholder="Search song or artist" autocomplete="off" enterkeyhint="search">
         </label>
         <label class="select-field">
           <span>Genre</span>
@@ -86,11 +86,11 @@
           <caption>Favorite songs selected for Brilliant's Music Universe</caption>
           <thead>
             <tr>
-              <th scope="col"><button type="button" class="sort-button" data-sort="title">Song Title</button></th>
-              <th scope="col"><button type="button" class="sort-button" data-sort="artist">Artist</button></th>
-              <th scope="col"><button type="button" class="sort-button" data-sort="genre">Genre</button></th>
+              <th scope="col" aria-sort="none"><button type="button" class="sort-button" data-sort="title" aria-pressed="false">Song Title</button></th>
+              <th scope="col" aria-sort="none"><button type="button" class="sort-button" data-sort="artist" aria-pressed="false">Artist</button></th>
+              <th scope="col" aria-sort="none"><button type="button" class="sort-button" data-sort="genre" aria-pressed="false">Genre</button></th>
               <th scope="col">Mood</th>
-              <th scope="col"><button type="button" class="sort-button" data-sort="duration">Duration</button></th>
+              <th scope="col" aria-sort="none"><button type="button" class="sort-button" data-sort="duration" aria-pressed="false">Duration</button></th>
               <th scope="col">Spotify</th>
             </tr>
           </thead>
